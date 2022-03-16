@@ -1,0 +1,21 @@
+.card{
+display: inline-block;
+float: none;
+margin: 20px;
+
+background-color: black;
+}
+
+
+
+.card-boy{
+	padding: 1rem 1rem;
+	
+}
+
+.brngrup{
+	display: flex;
+}
+.btnMore{
+	width: 100%;
+}

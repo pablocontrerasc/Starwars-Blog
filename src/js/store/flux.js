@@ -14,7 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			characters:[],
-			planets:[]
+			planets:[],
+			single:[]
 		
 		},
 		actions: {
@@ -22,26 +23,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// exampleFunction: () => {
 			// 	getActions().changeColor(0, "green");
 			// },
+
+		
+			
+			getCharacter: (index) => {
+			//	console.log(`https://www.swapi.tech/api/people/${index}/`);
+				fetch(`https://www.swapi.tech/api/people/${index}/`)
+				.then((response) => response.json())
+				.then(resjson => {
+						setStore({
+							single: resjson
+						});
+					});
+			},
+			
 			loadPeopleData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 
-				fetch("https://www.swapi.tech/api/people/")
+				fetch(`https://www.swapi.tech/api/people/`)
 				.then((response) => response.json())
-				.then(data => {
+				.then(data => { 
+					// setStore({characters: data.results})
+				
 					let personajes = getStore().characters;
 					for(let i =0; i  < data.results.length; i++){
 						fetch(data.results[i].url)
 							.then(response => response.json())
 							.then(dataP => { 
-								personajes.push(dataP.results.properties);
-								setStore({ characters:[...personajes]})
+								personajes.push(dataP.result.properties);
+								setStore({ characters: [...personajes]})
 							})
 					}
+					
 				})
-
-
 				.catch((error) => console.log(error));
 				
 			},
@@ -53,11 +69,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://www.swapi.tech/api/planets/")
 				.then(response => response.json())
 				.then(data => setStore({planets:data.results}))
+
+				
 				.catch((error) => console.log(error));
 			},
 		
 
-
+	
 			// changeColor: (index, color) => {
 			// 	//get the store
 			// 	const store = getStore();

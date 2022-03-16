@@ -4,8 +4,12 @@ import { Characters } from "../component/characters";
 
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		
-		<Characters/>
-	</div>
+	<>
+		<div className="container-fluid">
+			<h1 className="text-danger">Characters</h1></div>
+		<div className="mt-5 scroll_horizontal">
+
+			<Characters />
+		</div>
+	</>
 );

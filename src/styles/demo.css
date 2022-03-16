@@ -1,0 +1,8 @@
+.scroll_horizontal {
+	overflow-x: auto;
+	white-space: nowrap;
+	width: auto;
+	overflow: auto;
+    background: white;
+	
+}
