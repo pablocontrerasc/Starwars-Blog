@@ -36,6 +36,7 @@ const injectContext = PassedComponent => {
 			
 			 state.actions.loadPeopleData()
 			 state.actions.loadPlanetsData()
+			 state.actions.getCharacter()
 			
 		}, []);
 		
